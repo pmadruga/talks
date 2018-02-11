@@ -1,0 +1,182 @@
+<!doctype html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<title></title>
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css">
+
+	<!-- Theme used for syntax highlighting of code -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+</head>
+
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section data-markdown>
+				<textarea data-template>
+						# OCR and AR in React Native
+
+						February 13th, 2018.
+
+						React Native Meetup Copenhagen.
+
+						Founders House.						
+					</textarea>
+			</section>
+			<section data-markdown>
+					<textarea data-template>
+				## Pedro Madruga 
+				* Software engineer (js)
+				* Web and Mobile
+				* Founder of [occam.ooo](https://occam.ooo)
+				* [Podcaster](www.scopecreeperspodcast.com)
+				* Co-organizer for RN Meetup Copenhagen
+				* Volunteer
+				* Copenhagen since 2012
+				</textarea>
+
+			</section>
+			<section data-markdown>
+					<textarea data-template>
+				## Today's menu  🍔 🍟
+				* OCR
+				* Demo
+				* AR
+				* Demo
+
+				(...in a prototype)
+				</textarea>
+
+			</section>
+			<section data-markdown>
+					<textarea data-template>
+				## OCR in React Native 
+				Optical Character Recognition
+				
+			
+				### What's out there for RN?
+				* Tesseract
+				* Google Cloud (Vision API)
+				* ...
+				
+				
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				## React Native Tesseract OCR 
+				* Runs in iOS (somewhat officially)
+				* Based on Tesseract-OCR-iOS
+				* No language detection
+				* Static trained data included
+				* Hard to setup
+				* Free
+				</textarea>
+			</section>
+			<section data-markdown>
+				<textarea data-template>
+				## Google Cloud Vision API 
+				* Easy to setup
+				* Easy to use (POST w/ base64)
+				* Rich Response
+				* Language detection
+				* Paid
+				</textarea>
+			</section>
+			<section data-markdown>
+					<textarea data-template>
+				```javascript
+				export const getURL = `https://vision.googleapis.com/v1/images:annotate?key=${GOOGLE_CLOUD_KEY}`;
+				export const getTextRequestBody = image => ({
+					method: 'POST',
+					body: JSON.stringify({
+					  requests: [
+						{
+						  image: {
+							content: image
+						  },
+						  features: [
+							{
+							  type: 'TEXT_DETECTION'
+							}
+						  ]
+						}
+					  ]
+					})
+				  });
+				  ```
+				  </textarea>
+				</section>
+			<section data-markdown>
+					<textarea data-template>
+							# STOP
+							Demo time
+					</textarea>
+				</section>
+				<section data-markdown>
+						<textarea data-template>
+								## ARKit in React Native
+								* React Native ARKit
+								* Expo AR (three.js)
+								* React ARKit
+								* Viro
+						</textarea>
+					</section>
+					<section data-markdown>
+							<textarea data-template>
+									## React Native ARkit
+									* (Relatively) easy setup
+									* Works...
+									* ... using other library than React-Native Camera
+									* Debugging?
+							</textarea>
+						</section>
+						<section data-markdown>
+								<textarea data-template>
+										# STOP
+										Demo time
+								</textarea>
+							</section>
+							<section data-markdown>
+								<textarea data-template>
+											# Thank you
+											* www.pedromadruga.com
+											* twitter.com/thepedromadruga
+								</textarea>
+							</section>
+		</div>
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+		// More info about config & dependencies:
+		// - https://github.com/hakimel/reveal.js#configuration
+		// - https://github.com/hakimel/reveal.js#dependencies
+		Reveal.initialize({
+			dependencies: [
+				{ src: 'plugin/markdown/marked.js' },
+				{ src: 'plugin/markdown/markdown.js' },
+				{ src: 'plugin/notes/notes.js', async: true },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } }
+			]
+		});
+	</script>
+</body>
+
+</html>
